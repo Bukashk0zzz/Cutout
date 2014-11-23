@@ -33,11 +33,11 @@ if (isset($_GET['id']) && $id = $_GET['id']) {
 }
 
 function restartAirPlay() {
-    exec("servise shairport restart");
+    exec("service shairport restart");
 }
 
 function playRadio() {
-    exec("mplayer http://62.80.190.246:8000/PRK128 &");
+    exec("screen mplayer http://62.80.190.246:8000/PRK128 &");
 }
 
 function stopRadio() {
