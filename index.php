@@ -8,11 +8,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
-    <link href="/static/images/apple-touch-icon-precomposed.png"
+    <link href="apple-touch-icon-precomposed.png"
           sizes="152x152"
           rel="apple-touch-icon">
 
-    <link href="/static/images/apple-touch-icon-precomposed-120x120.png"
+    <link href="apple-touch-icon-precomposed-120x120.png"
           sizes="120x120"
           rel="apple-touch-icon">
 
