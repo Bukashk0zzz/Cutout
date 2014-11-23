@@ -37,7 +37,7 @@ function restartAirPlay() {
 }
 
 function playRadio() {
-    exec("mplayer http://62.80.190.246:8000/PRK128");
+    exec("mplayer http://62.80.190.246:8000/PRK128 &");
 }
 
 function stopRadio() {
