@@ -6,6 +6,16 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <link href="/static/images/apple-touch-icon-precomposed.png"
+          sizes="152x152"
+          rel="apple-touch-icon">
+
+    <link href="/static/images/apple-touch-icon-precomposed-120x120.png"
+          sizes="120x120"
+          rel="apple-touch-icon">
+
     <link href="/css/styles.min.css" rel="stylesheet">
     <script src="/js/main.min.js"></script>
 </head>
