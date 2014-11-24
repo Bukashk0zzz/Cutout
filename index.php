@@ -16,6 +16,16 @@
           sizes="120x120"
           rel="apple-touch-icon">
 
+    <link href="apple-touch-startup-image-640x1096.png"
+          media="(device-width: 320px) and (device-height: 568px)
+                 and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link href="apple-touch-startup-image-640x920.png"
+          media="(device-width: 320px) and (device-height: 480px)
+                 and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
     <link href="/css/styles.min.css" rel="stylesheet">
     <script src="/js/main.min.js"></script>
 </head>
