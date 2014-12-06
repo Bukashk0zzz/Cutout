@@ -40,7 +40,7 @@
     <button class="btn btn-positive btn-block btn-outlined commandStart" data-id="2">Play radio</button>
     <button class="btn btn-negative btn-block btn-outlined commandStart" data-id="3">Stop radio</button>
     <h3 style="text-align: center;">Volume</h3>
-    <input id="volume" type="range" min="80" max="100" step="1" value="<?=getVolume()?>" class="form-control">
+    <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
 </div>
 
 </body>
@@ -71,7 +71,7 @@ function stopRadio() {
 }
 
 function getVolume() {
-//    $volume = 'Mono: Playback -3854 [60%] [-38.54dB] [on]';
+//    $volume = 'Mono: Playback -3854 [90%] [-38.54dB] [on]';
     $volume = exec("amixer | grep 'Mono: Playback'");
     $volume = explode('[',$volume)[1];
     $volume = explode('%]',$volume)[0];
