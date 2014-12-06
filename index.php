@@ -40,7 +40,7 @@
     <button class="btn btn-positive btn-block btn-outlined commandStart" data-id="2">Play radio</button>
     <button class="btn btn-negative btn-block btn-outlined commandStart" data-id="3">Stop radio</button>
     <h3 style="text-align: center;">Volume</h3>
-    <input id="volume" type="range" min="0" max="100" step="1" value="<?=getVolume()?>" class="form-control">
+    <input id="volume" type="range" min="80" max="100" step="1" value="<?=getVolume()?>" class="form-control">
 </div>
 
 </body>
