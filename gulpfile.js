@@ -15,6 +15,7 @@ gulp.task('styles', function () {
     gulp.src([
         'css/ratchet.min.css',
         'css/ratchet-theme-ios.min.css',
+        'css/rangeslider.css',
         'css/main.css'
     ])
 	.pipe(cache('styling'))
@@ -31,6 +32,7 @@ gulp.task('js', function () {
     return gulp.src([
         'js/jquery-2.1.1.min.js',
         'js/ratchet.min.js',
+        'js/rangeslider.min.js',
         'js/main.js'
     ])
         .pipe(cache('jsing'))

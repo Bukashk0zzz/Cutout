@@ -39,6 +39,8 @@
     <button class="btn btn-primary btn-block btn-outlined commandStart" data-id="1">Restart airplay</button>
     <button class="btn btn-positive btn-block btn-outlined commandStart" data-id="2">Play radio</button>
     <button class="btn btn-negative btn-block btn-outlined commandStart" data-id="3">Stop radio</button>
+    <h3 style="text-align: center;">Volume</h3>
+    <input id="volume" type="range" min="0" max="100" step="1" value="<?=getVolume()?>" class="form-control">
 </div>
 
 </body>
@@ -52,6 +54,10 @@ if (isset($_GET['id']) && $id = $_GET['id']) {
     elseif ($id == 1) restartAirPlay();
 }
 
+if (isset($_GET['volume']) && $volume = $_GET['volume']) {
+    setVolume($volume);
+}
+
 function restartAirPlay() {
     exec("service shairport restart");
 }
@@ -62,4 +68,16 @@ function playRadio() {
 
 function stopRadio() {
     exec("killall -9 mplayer");
+}
+
+function getVolume() {
+//    $volume = 'Mono: Playback -3854 [60%] [-38.54dB] [on]';
+    $volume = exec("amixer | grep 'Mono: Playback'");
+    $volume = explode('[',$volume)[1];
+    $volume = explode('%]',$volume)[0];
+    return (int)$volume;
+}
+
+function setVolume($volume) {
+    exec("amixer set PCM $volume%");
 }
