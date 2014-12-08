@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 gulp.task('styles', function () {
     gulp.src([
         'css/materialize.css',
-        'css/rangeslider.css',
+        'css/materialPreloader.css',
         'css/main.css'
     ])
 	.pipe(cache('styling'))
@@ -30,7 +30,8 @@ gulp.task('styles', function () {
 gulp.task('js', function () {
     return gulp.src([
         'js/jquery-2.1.1.min.js',
-        'js/materialize.min.js',
+        'js/materialize.js',
+        'js/materialPreloader.js',
         'js/main.js'
     ])
         .pipe(cache('jsing'))

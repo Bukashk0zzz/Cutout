@@ -27,47 +27,45 @@
           rel="apple-touch-startup-image">
 
     <link href="/css/styles.min.css" rel="stylesheet">
-    <script src="/js/main.min.js"></script>
 </head>
-<body>
+<body class="grey lighten-3">
 <nav>
-    <div class="nav-wrapper row">
-        <div class="col s12">
+    <div class="container">
+        <div class="nav-wrapper">
             <a href="#" class="brand-logo">Cutout</a>
-            <ul class="side-nav">
-                <li><a href="javascript:window.location.reload()"><i class="mdi-navigation-refresh"></i></a></li>
-            </ul>
         </div>
     </div>
 </nav>
-
-<div class="content" style="text-align: center;">
-    <div class="radio">
-        <div class="row">
-            <i class="mdi-av-radio" style="font-size: 120px;"></i>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <button class="waves-effect waves-green btn commandStart" data-id="2">Play radio <i class="mdi-av-play-arrow"></i></button>
-            </div>
-            <div class="col s6">
-                <button class="waves-effect waves-red btn commandStart" data-id="3">Stop radio <i class="mdi-av-pause"></i></button>
-            </div>
-        </div>
-        <div>
+<div class="container">
+    <div class="container" style="text-align: center;">
+        <div class="radio">
             <div class="row">
-                <div class="col s12 range-field">
-                    <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
-                    <label for="volume">Volume</label>
+                <i class="mdi-av-radio" style="font-size: 120px; text-shadow: 0 12px 15px rgba(0,0,0,.24),0 17px 50px rgba(0,0,0,.19);"></i>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button class="waves-effect waves-green btn commandStart" data-id="2">Play radio<i class="mdi-av-play-arrow"></i></button>
+                </div>
+                <div class="col s6">
+                    <button class="waves-effect waves-red btn commandStart" data-id="3">Stop radio<i class="mdi-av-pause"></i></button>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col s12 range-field">
+                        <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
+                        <label for="volume">Volume</label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 40px;">
-        <button class="waves-effect waves-light btn commandStart" data-id="1"><i class="mdi-av-repeat"></i>Restart airplay</button>
+        <div class="row" style="margin-top: 40px;">
+            <button class="waves-effect waves-light btn commandStart" data-id="1"><i class="mdi-av-repeat"></i>Restart airplay</button>
+        </div>
     </div>
 </div>
 
+<script src="/js/main.min.js"></script>
 </body>
 </html>
 
@@ -96,8 +94,8 @@ function stopRadio() {
 }
 
 function getVolume() {
-//    $volume = 'Mono: Playback -3854 [95%] [-38.54dB] [on]';
-    $volume = exec("amixer | grep 'Mono: Playback'");
+    $volume = 'Mono: Playback -3854 [95%] [-38.54dB] [on]';
+//    $volume = exec("amixer | grep 'Mono: Playback'");
     $volume = explode('[',$volume)[1];
     $volume = explode('%]',$volume)[0];
     return (int)$volume;
