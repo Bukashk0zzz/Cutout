@@ -13,8 +13,7 @@ var gulp = require('gulp'),
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
     gulp.src([
-        'css/ratchet.min.css',
-        'css/ratchet-theme-ios.min.css',
+        'css/materialize.css',
         'css/rangeslider.css',
         'css/main.css'
     ])
@@ -31,8 +30,7 @@ gulp.task('styles', function () {
 gulp.task('js', function () {
     return gulp.src([
         'js/jquery-2.1.1.min.js',
-        'js/ratchet.min.js',
-        'js/rangeslider.min.js',
+        'js/materialize.min.js',
         'js/main.js'
     ])
         .pipe(cache('jsing'))

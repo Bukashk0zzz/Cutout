@@ -30,17 +30,42 @@
     <script src="/js/main.min.js"></script>
 </head>
 <body>
-<header class="bar bar-nav">
-    <h1 class="title">Cutout</h1>
-</header>
+<nav>
+    <div class="nav-wrapper row">
+        <div class="col s12">
+            <a href="#" class="brand-logo">Cutout</a>
+            <ul class="side-nav">
+                <li><a href="javascript:window.location.reload()"><i class="mdi-navigation-refresh"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<div class="content">
-    <br>
-    <button class="btn btn-primary btn-block btn-outlined commandStart" data-id="1">Restart airplay</button>
-    <button class="btn btn-positive btn-block btn-outlined commandStart" data-id="2">Play radio</button>
-    <button class="btn btn-negative btn-block btn-outlined commandStart" data-id="3">Stop radio</button>
-    <h3 style="text-align: center;">Volume</h3>
-    <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
+<div class="content" style="text-align: center;">
+    <div class="radio">
+        <div class="row">
+            <i class="mdi-av-radio" style="font-size: 120px;"></i>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <button class="waves-effect waves-green btn commandStart" data-id="2">Play radio <i class="mdi-av-play-arrow"></i></button>
+            </div>
+            <div class="col s6">
+                <button class="waves-effect waves-red btn commandStart" data-id="3">Stop radio <i class="mdi-av-pause"></i></button>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col s12 range-field">
+                    <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
+                    <label for="volume">Volume</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <button class="waves-effect waves-light btn commandStart" data-id="1"><i class="mdi-av-repeat"></i>Restart airplay</button>
+    </div>
 </div>
 
 </body>
@@ -71,7 +96,7 @@ function stopRadio() {
 }
 
 function getVolume() {
-//    $volume = 'Mono: Playback -3854 [90%] [-38.54dB] [on]';
+//    $volume = 'Mono: Playback -3854 [95%] [-38.54dB] [on]';
     $volume = exec("amixer | grep 'Mono: Playback'");
     $volume = explode('[',$volume)[1];
     $volume = explode('%]',$volume)[0];

@@ -10,13 +10,7 @@ $(document).ready(function() {
             id = el.attr('data-id');
 
         $.get('/?id='+id);
-    });
-
-    $('input[type="range"]').rangeslider({
-        polyfill: false,
-        rangeClass: 'rangeslider',
-        fillClass: 'rangeslider__fill',
-        handleClass: 'rangeslider__handle'
+        toast('Done!', 3000)
     });
 
     body.on('change','#volume',function(){
@@ -29,6 +23,6 @@ $(document).ready(function() {
             var volume = $("#volume").val();
             $.get('/?volume='+volume);
             sliding = false;
-        }, 2000);
+        }, 200);
     })
 });
