@@ -1,3 +1,4 @@
+<?php define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,7 @@
     <title>Cutout</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 
     <link href="apple-touch-icon-precomposed.png"
@@ -16,20 +17,20 @@
           sizes="120x120"
           rel="apple-touch-icon">
 
-    <link href="apple-touch-startup-image-640x1096.png"
+    <link href="apple-touch-startup-image-640x1096.jpg"
           media="(device-width: 320px) and (device-height: 568px)
                  and (-webkit-device-pixel-ratio: 2)"
           rel="apple-touch-startup-image">
 
-    <link href="apple-touch-startup-image-640x920.png"
+    <link href="apple-touch-startup-image-640x920.jpg"
           media="(device-width: 320px) and (device-height: 480px)
                  and (-webkit-device-pixel-ratio: 2)"
           rel="apple-touch-startup-image">
 
     <link href="/css/styles.min.css" rel="stylesheet">
 </head>
-<body class="grey lighten-3">
-<nav>
+<body>
+<nav style="padding-top: 10px;">
     <div class="container">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">Cutout</a>
@@ -70,7 +71,6 @@
 </html>
 
 <?php
-
 if (isset($_GET['id']) && $id = $_GET['id']) {
     if ($id == 3) stopRadio();
     elseif ($id == 2) playRadio();
@@ -94,8 +94,7 @@ function stopRadio() {
 }
 
 function getVolume() {
-    $volume = 'Mono: Playback -3854 [95%] [-38.54dB] [on]';
-//    $volume = exec("amixer | grep 'Mono: Playback'");
+    $volume = (APPLICATION_ENV == 'development') ?'Mono: Playback -3854 [95%] [-38.54dB] [on]':exec("amixer | grep 'Mono: Playback'");
     $volume = explode('[',$volume)[1];
     $volume = explode('%]',$volume)[0];
     return (int)$volume;
