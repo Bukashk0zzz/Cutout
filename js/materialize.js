@@ -4103,7 +4103,7 @@ if (typeof define == TYPE_FUNCTION && define.amd) {
 
 
   // Range Input
-  var range_input = $('input[type=range]');
+  var range_input = $('.range');
   var range_mousedown = false;
 
   range_input.each(function () {
