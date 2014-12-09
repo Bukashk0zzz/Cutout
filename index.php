@@ -53,7 +53,7 @@
             </div>
             <div>
                 <div class="row">
-                    <div class="col s12 range-field">
+                    <div class="col s12">
                         <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
                         <label for="volume">Volume</label>
                     </div>
