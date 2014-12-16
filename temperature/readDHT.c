@@ -37,7 +37,7 @@ int main(int argc, char **argv)
   int dhtpin = 3;
 
 
-  printf("Using pin #%d\n", dhtpin);
+//  printf("Using pin #%d\n", dhtpin);
   int i = 10;
   while (--i && readDHT(type, dhtpin))
  {
@@ -125,13 +125,13 @@ int readDHT(int type, int pin) {
 	f = (data[2] & 0x7F)* 256 + data[3];
         f /= 10.0;
         if (data[2] & 0x80)  f *= -1;
-	printf("%.1f ; %.1f \%\n", f, h);
+	printf("%.1f ; %.1f \n", f, h);
 
     }
     return 0;
   } else {
      printf("CRC error!\n");
-     printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%x\n", j, data[0], data[1], data[2], data[3], data[4]);   
+//     printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%x\n", j, data[0], data[1], data[2], data[3], data[4]);
   for (int i=3; i<bitidx; i+=2) {
         printf("bit %d: %d\n", i-3, bits[i]);
         printf("bit %d: %d (%d)\n", i-2, bits[i+1], bits[i+1] > 200);

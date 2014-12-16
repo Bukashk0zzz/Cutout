@@ -16,7 +16,7 @@ try:
     Current_State  = 0    
 
   print "  Waiting for action"
-    
+
   while True :
    
     Current_State = GPIO.input(GPIO_PIR)
@@ -25,6 +25,10 @@ try:
       ts = time.time()
       print "  Motion detected! "
       print ts
+      f = open('lastMotion', 'r+')
+      ts = str(ts)
+      f.write(ts)
+      f.close()
       Previous_State=1
     elif Current_State==0 and Previous_State==1:
       #print "  Waiting for action"
