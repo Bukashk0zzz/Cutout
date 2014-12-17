@@ -30,7 +30,7 @@ try:
       print "  Motion detected! "
       ts = int(ts)
       print ts
-      cur.execute("INSERT INTO pir(time) VALUES (ts)")
+      cur.execute("INSERT INTO pir(time) VALUES (?)",ts)
       conn.commit()
       Previous_State=1
     elif Current_State==0 and Previous_State==1:
