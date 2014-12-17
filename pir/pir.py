@@ -5,7 +5,7 @@ import time
 import sqlite3
 
 conn = sqlite3.connect('pir.db')
-cur = con.cursor()
+cur = conn.cursor()
 
 GPIO.setmode(GPIO.BCM)
 GPIO_PIR = 7
