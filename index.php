@@ -60,6 +60,28 @@
                 </div>
             </div>
         </div>
+        <div class="temperature">
+            <?php list($temperature,$humidity,$time) = getTemperature();?>
+            <div class="row">
+                <span>
+                    <?=$temperature?> <i class="mdi-image-wb-sunny"></i>
+                </span>
+                <span>
+                    <?=$humidity?>% <i class="mdi-action-invert-colors"></i>
+                </span>
+                <span>
+                    <?=date('H:i:s',$time)?> <i class="mdi-device-access-time"></i>
+                </span>
+            </div>
+        </div>
+        <div class="pir">
+            <?php $time_action = getPir();?>
+            <div class="row">
+                <span class="pirContent">
+                    <?=date('H:i:s',$time_action)?> <i class="mdi-action-accessibility"></i>
+                </span>
+            </div>
+        </div>
         <div class="row" style="margin-top: 40px;">
             <button class="waves-effect waves-light btn commandStart" data-id="1"><i class="mdi-av-repeat"></i>Restart airplay</button>
         </div>
@@ -102,4 +124,25 @@ function getVolume() {
 
 function setVolume($volume) {
     exec("amixer set PCM $volume%");
+}
+
+function getTemperature() {
+    $temperature = '';
+    $humidity = '';
+    $time = time();
+    $db = new SQLite3("temperature/temperature.db");
+    if ($db) {
+        $result = $db->query('SELECT * FROM temperature order by id desc limit 1');
+        if ($result = $result->fetchArray(SQLITE3_ASSOC)) {
+            $temperature = $result['temperature'];
+            $humidity = $result['humidity'];
+            $time = $result['time'];
+        }
+    }
+
+    return [$temperature,$humidity,$time];
+}
+
+function getPir() {
+    return file_get_contents("pir/lastMotion");
 }
