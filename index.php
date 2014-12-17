@@ -144,5 +144,13 @@ function getTemperature() {
 }
 
 function getPir() {
-    return file_get_contents("pir/lastMotion");
+    $time = time();
+    $db = new SQLite3("pir/pir.db");
+    if ($db) {
+        $result = $db->query('SELECT * FROM pir order by id desc limit 1');
+        if ($result = $result->fetchArray(SQLITE3_ASSOC)) {
+            $time = $result['time'];
+        }
+    }
+    return $time;
 }

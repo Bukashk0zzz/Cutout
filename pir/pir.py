@@ -2,6 +2,10 @@
 
 import RPi.GPIO as GPIO
 import time
+import sqlite3
+
+conn = sqlite3.connect('pir.db')
+cur = con.cursor()
 
 GPIO.setmode(GPIO.BCM)
 GPIO_PIR = 7
@@ -24,11 +28,10 @@ try:
     if Current_State==1 and Previous_State==0:
       ts = time.time()
       print "  Motion detected! "
+      ts = int(ts)
       print ts
-      f = open('lastMotion', 'r+')
-      ts = str(ts)
-      f.write(ts)
-      f.close()
+      cur.execute("INSERT INTO pir(time) VALUES (ts)")
+      conn.commit()
       Previous_State=1
     elif Current_State==0 and Previous_State==1:
       #print "  Waiting for action"
