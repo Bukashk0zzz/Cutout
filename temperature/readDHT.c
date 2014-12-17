@@ -18,7 +18,7 @@
 
 #define MAXTIMINGS 100
 
-//#define DEBUG
+#define DEBUG
 
 #define DHT11 11
 #define DHT22 22
@@ -36,13 +36,15 @@ int main(int argc, char **argv)
     int dhtpin = 3;
     
     #ifdef DEBUG
-        printf("Using pin #%d n", dhtpin);
+        printf("Using pin #%d \n", dhtpin);
     #endif
 
     int i = 10;
     while (--i && readDHT(type, dhtpin))
     {
-        printf("Try number %d n",i);
+        #ifdef DEBUG
+            printf("Try number %d \n",i);
+        #endif
     }
     bcm2835_close();
     return 0;
@@ -107,17 +109,17 @@ int readDHT(int type, int pin) {
     
     #ifdef DEBUG
         for (int i=3; i<bitidx; i+=2) {
-            printf("bit %d: %dn", i-3, bits[i]);
-            printf("bit %d: %d (%d)n", i-2, bits[i+1], bits[i+1] > 200);
+            printf("bit %d: %d \n", i-3, bits[i]);
+            printf("bit %d: %d (%d) \n", i-2, bits[i+1], bits[i+1] > 200);
         }
-        printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%xn", j, data[0], data[1], data[2], data[3], data[4]);
+        printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%x \n", j, data[0], data[1], data[2], data[3], data[4]);
     #endif
     
     if ((j >= 39) &&
     (data[4] == ((data[0] + data[1] + data[2] + data[3]) & 0xFF)) ) {
 
         if (type == DHT11) {
-            printf("%d ; %d n", data[2], data[0]);
+            printf("%d ; %d \n", data[2], data[0]);
         }
 
         if (type == DHT22) {
@@ -128,18 +130,18 @@ int readDHT(int type, int pin) {
             f = (data[2] & 0x7F)* 256 + data[3];
             f /= 10.0;
             if (data[2] & 0x80)  f *= -1;
-            printf("%.1f ; %.1f n", f, h);
+            printf("%.1f ; %.1f \n", f, h);
             
         }
         return 0;
     } else {
         #ifdef DEBUG
-            printf("CRC error!n");
-            printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%xn", j, data[0], data[1], data[2], data[3], data[4]);
+            printf("CRC error! \n");
+            printf("Data (%d): 0x%x 0x%x 0x%x 0x%x 0x%x \n", j, data[0], data[1], data[2], data[3], data[4]);
 
             for (int i=3; i<bitidx; i+=2) {
-                printf("bit %d: %dn", i-3, bits[i]);
-                printf("bit %d: %d (%d)n", i-2, bits[i+1], bits[i+1] > 200);
+                printf("bit %d: %d \n", i-3, bits[i]);
+                printf("bit %d: %d (%d) \n", i-2, bits[i+1], bits[i+1] > 200);
             }
         #endif
 
