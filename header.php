@@ -35,7 +35,7 @@
 </head>
 <body>
 <header>
-    <nav >
+    <nav id="mainMenu">
         <div class="container">
             <div class="nav-wrapper"><a href="/" class="brand-logo">Cutout</a>
                 <ul id="nav-mobile" class="right side-nav">

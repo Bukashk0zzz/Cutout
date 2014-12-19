@@ -60,18 +60,21 @@ $(document).ready(function() {
         }, 1000);
     });
 
+    if ($("#temperatureToday").length) {
 
-    var ctx = $("#temperatureToday").get(0).getContext("2d"),
-        myLineChart = new Chart(ctx).Line(temperatureTodayData, {
-            responsive: true,
-            pointHitDetectionRadius : 3,
-            tooltipTemplate: "<%if (label){%>Time: <%=label%> Value: <%}%><%= value %>"
-        });
+        var ctx = $("#temperatureToday").get(0).getContext("2d"),
+            myLineChart = new Chart(ctx).Line(temperatureTodayData, {
+                responsive: true,
+                pointHitDetectionRadius : 3,
+                tooltipTemplate: "<%if (label){%>Time: <%=label%> Value: <%}%><%= value %>"
+            });
 
-    var ctx2 = $("#humidityToday").get(0).getContext("2d"),
-        myLineChart = new Chart(ctx2).Line(humidityTodayData, {
-            responsive: true,
-            pointHitDetectionRadius : 3,
-            tooltipTemplate: "<%if (label){%> Time: <%=label%> Value: <%}%><%= value %>"
-        });
+        var ctx2 = $("#humidityToday").get(0).getContext("2d"),
+            myLineChart = new Chart(ctx2).Line(humidityTodayData, {
+                responsive: true,
+                pointHitDetectionRadius : 3,
+                tooltipTemplate: "<%if (label){%> Time: <%=label%> Value: <%}%><%= value %>"
+            });
+    }
+
 });
