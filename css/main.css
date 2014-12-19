@@ -5,3 +5,14 @@ input[type=range] {
 .pirContent {
     padding: 20px;
 }
+
+#mainMenu{
+    padding-top: 10px;
+    position: fixed;
+    z-index: 1000;
+}
+
+main {
+    margin-top: 0;
+    padding-top: 60px;
+}

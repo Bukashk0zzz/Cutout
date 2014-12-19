@@ -2,6 +2,12 @@ $(document).ready(function() {
     var body = $('body'),
         sliding = false;
 
+    if (/temperature/.test(location.href)) $('#l_temperature').addClass('active');
+    else if (/move/.test(location.href)) $('#l_move').addClass('active');
+    else $('#l_dashboard').addClass('active');
+
+    $(".button-collapse").sideNav();
+
     preloader = new $.materialPreloader({
         position: 'top',
         height: '5px',
@@ -52,5 +58,20 @@ $(document).ready(function() {
         setTimeout(function(){
             preloader.off();
         }, 1000);
-    })
+    });
+
+
+    var ctx = $("#temperatureToday").get(0).getContext("2d"),
+        myLineChart = new Chart(ctx).Line(temperatureTodayData, {
+            responsive: true,
+            pointHitDetectionRadius : 3,
+            tooltipTemplate: "<%if (label){%>Time: <%=label%> Value: <%}%><%= value %>"
+        });
+
+    var ctx2 = $("#humidityToday").get(0).getContext("2d"),
+        myLineChart = new Chart(ctx2).Line(humidityTodayData, {
+            responsive: true,
+            pointHitDetectionRadius : 3,
+            tooltipTemplate: "<%if (label){%> Time: <%=label%> Value: <%}%><%= value %>"
+        });
 });

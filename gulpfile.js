@@ -30,6 +30,7 @@ gulp.task('styles', function () {
 gulp.task('js', function () {
     return gulp.src([
         'js/jquery-2.1.1.min.js',
+        'js/Chart.js',
         'js/materialize.js',
         'js/materialPreloader.js',
         'js/main.js'

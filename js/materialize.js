@@ -3645,6 +3645,7 @@ if (typeof define == TYPE_FUNCTION && define.amd) {
       var menu_id = $("#"+ $this.attr('data-activates'));
      
       function removeMenu() {
+
         $('#sidenav-overlay').animate({opacity: 0}, {duration: 300, queue: false, easing: 'easeOutQuad', 
           complete: function() {
             $(this).remove();
