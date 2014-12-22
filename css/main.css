@@ -16,3 +16,32 @@ main {
     margin-top: 0;
     padding-top: 60px;
 }
+
+.landscape {
+    display: none;
+}
+
+.portrait {
+    display: block;
+}
+
+.radioWrap {
+    text-align: center;
+}
+
+.temperatureGraph {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+}
+
+@media only screen and (max-device-width: 600px) and (orientation:landscape) {
+    .landscape {
+        display: block;
+    }
+    .portrait {
+        display: none;
+    }
+    main {
+        padding-top: 0px;
+    }
+}
