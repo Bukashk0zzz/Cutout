@@ -1,5 +1,9 @@
 <?php
 
+function add_quotes($str) {
+    return sprintf("'%s'", $str);
+}
+
 class dbData {
     public function getTemperature() {
         $temperature = '';
@@ -71,10 +75,39 @@ class dbData {
             }
         }
 
-        function add_quotes($str) {
-            return sprintf("'%s'", $str);
-        }
+
 
         return [implode(',',array_map('add_quotes', $labels)),implode(",",array_map('add_quotes', $data)),implode(",",array_map('add_quotes', $dataH))];
+    }
+
+    public function getPirTodayData()
+    {
+        $time_max = time();
+        $time_min = $time_max - 86400;
+        $labels = array();
+        $data = array();
+
+        $db = new SQLite3("pir/pir.db");
+        if ($db) {
+            $result = $db->query("SELECT * FROM pir where time < $time_max AND time > $time_min order by id asc");
+            $time_last = $time_min + 1800;
+            $temp = 0;
+            $time = 0;
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                if ($time_last < $row['time']) {
+
+                    $labels[] = date('H:i',$time);
+                    $data[] = $temp;
+
+                    $temp = 0;
+                    $time_last = $row['time']+1800;
+                }
+
+                $temp = $temp+1;
+                $time = $row['time'];
+            }
+        }
+
+        return [implode(',',array_map('add_quotes', $labels)),implode(",",array_map('add_quotes', $data))];
     }
 }

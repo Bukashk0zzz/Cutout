@@ -123,6 +123,27 @@
                         </script>
                         <canvas id="temperatureToday" height="175"></canvas>
                     </div>
+                    <div class="row pirGraph" style="text-align: center;">
+                        <script>
+                            <?php list($labels,$data) = $db->getPirTodayData()?>
+                            pirTodayData = {
+                                labels: [<?=$labels?>],
+                                datasets: [
+                                    {
+                                        label: "PIR",
+                                        fillColor: "rgba(151,187,205,0.2)",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        pointColor: "rgba(151,187,205,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(151,187,205,1)",
+                                        data: [<?=$data?>]
+                                    }
+                                ]
+                            };
+                        </script>
+                        <canvas id="pirToday" height="175"></canvas>
+                    </div>
                 </div>
             </div>
         </main>

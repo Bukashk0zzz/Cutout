@@ -61,4 +61,11 @@ $(document).ready(function() {
             multiTooltipTemplate: "<%=datasetLabel%>: <%=value%>"
         });
 
+    var ctx2 = $("#pirToday").get(0).getContext("2d"),
+        myLineChart = new Chart(ctx2).Radar(pirTodayData, {
+            responsive: true,
+            pointHitDetectionRadius : 3,
+            multiTooltipTemplate: "<%=datasetLabel%>: <%=value%>"
+        });
+
 });

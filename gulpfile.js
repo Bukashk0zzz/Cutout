@@ -44,18 +44,6 @@ gulp.task('js', function () {
         .pipe(gulp.dest('js/'));
 });
 
-// CSS reload
-gulp.task('cssReload', function () {
-    return gulp.src('css/**/*.css')
-        .pipe(browserSync.reload({stream:true}));
-});
-
-// JS reload
-gulp.task('jsReload', function () {
-    return gulp.src('js/**/*.js')
-        .pipe(browserSync.reload({stream:true}));
-});
-
 // Watch Files For Changes & Reload
 gulp.task('default', ['styles','js'], function () {
     browserSync({
@@ -67,6 +55,6 @@ gulp.task('default', ['styles','js'], function () {
         proxy: "http://127.0.0.1:8000"
     });
 
-    gulp.watch(['css/**/*.css'], ['cssReload']);
-    gulp.watch(['js/**/*.js'], ['js','jsReload']);
+    gulp.watch(['css/**/*.css'], ['styles']);
+    gulp.watch(['js/**/*.js'], ['js']);
 });
