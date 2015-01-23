@@ -168,7 +168,8 @@ function restartAirPlay() {
 }
 
 function playRadio() {
-    exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &");
+//    exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &");
+    exec("screen /usr/bin/mplayer http://www.radiorelax.ua/RadioRelax.m3u &");
 }
 
 function stopRadio() {
