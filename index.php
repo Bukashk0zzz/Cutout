@@ -168,8 +168,9 @@ function restartAirPlay() {
 }
 
 function playRadio() {
-//    exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &");
-    exec("screen /usr/bin/mplayer http://www.radiorelax.ua/RadioRelax.m3u &");
+//    exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &"); //Prosto
+//    exec("screen /usr/bin/mplayer http://www.radiorelax.ua/RadioRelax.m3u &"); //Relax
+    exec("screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
 }
 
 function stopRadio() {
