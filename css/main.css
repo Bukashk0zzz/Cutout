@@ -29,6 +29,18 @@ main {
     text-align: center;
 }
 
+.temperature {
+    margin-top: -20px;
+}
+
+.pir {
+    margin-top: -10px;
+}
+
+.volumeWrapper {
+    margin-top: -30px;
+}
+
 .temperatureGraph {
     margin-left: -20px !important;
     margin-right: -20px !important;

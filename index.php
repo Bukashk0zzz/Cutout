@@ -48,47 +48,66 @@
                         <div class="row">
                             <i class="mdi-av-radio" style="font-size: 120px; text-shadow: 0 12px 15px rgba(0,0,0,.24),0 17px 50px rgba(0,0,0,.19);"></i>
                         </div>
-                        <div class="row">
-                            <div class="col s6">
-                                <button class="waves-effect waves-green btn commandStart" data-id="2">Play radio<i class="mdi-av-play-arrow"></i></button>
-                            </div>
-                            <div class="col s6">
-                                <button class="waves-effect waves-red btn commandStart" data-id="3">Stop radio<i class="mdi-av-pause"></i></button>
-                            </div>
-                        </div>
-                        <div>
+
+                        <div class="temperature row">
+                            <?php list($temperature, $humidity, $time) = $db->getTemperature(); ?>
                             <div class="row">
-                                <div class="col s12">
-                                    <input id="volume" type="range" min="80" max="100" step="0.1" value="<?=getVolume()?>" class="form-control">
-                                    <label for="volume">Volume</label>
+                                <span>
+                                    <?= $temperature ?> <i class="mdi-image-wb-sunny"></i>
+                                </span>
+                                <span>
+                                    <?= $humidity ?>% <i class="mdi-action-invert-colors"></i>
+                                </span>
+                                <span>
+                                    <?= date('H:i:s', $time) ?> <i class="mdi-device-access-time"></i>
+                                </span>
+                            </div>
+                            <div class="pir">
+                                <?php $time_action = $db->getPir(); ?>
+                                <div class="row">
+                                <span class="pirContent">
+                                    <?= date('H:i:s', $time_action) ?> <i class="mdi-action-accessibility"></i>
+                                </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="temperature">
-                        <?php list($temperature,$humidity,$time) = $db->getTemperature();?>
-                        <div class="row">
-                        <span>
-                            <?=$temperature?> <i class="mdi-image-wb-sunny"></i>
-                        </span>
-                        <span>
-                            <?=$humidity?>% <i class="mdi-action-invert-colors"></i>
-                        </span>
-                        <span>
-                            <?=date('H:i:s',$time)?> <i class="mdi-device-access-time"></i>
-                        </span>
+
+
+                        <div class="row volumeWrapper">
+                            <div class="col s12">
+                                <input id="volume" type="range" min="80" max="100" step="0.1"
+                                       value="<?= getVolume() ?>" class="form-control">
+                                <label for="volume">Volume</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pir">
-                        <?php $time_action = $db->getPir();?>
+
                         <div class="row">
-                    <span class="pirContent">
-                        <?=date('H:i:s',$time_action)?> <i class="mdi-action-accessibility"></i>
-                    </span>
+                            <div class="col s4">
+                                <button class="waves-effect waves-green btn commandStart" data-id="4">
+                                    A
+                                </button>
+                            </div>
+                            <div class="col s4">
+                                <button class="waves-effect waves-green btn commandStart" data-id="5">
+                                    M
+                                </button>
+                            </div>
+                            <div class="col s4">
+                                <button class="waves-effect waves-green btn commandStart" data-id="6">
+                                    P
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-top: 40px;">
-                        <button class="waves-effect waves-light btn commandStart" data-id="1"><i class="mdi-av-repeat"></i>Restart airplay</button>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <button class="waves-effect waves-red btn commandStart red darken-4" data-id="3"><i class="large mdi-av-stop left"></i>Stop radio</button>
+                            </div>
+
+                            <div class="col s12">
+                                <button class="waves-effect waves-light btn commandStart blue-grey darken-4" data-id="1"><i class="large mdi-av-repeat left"></i>Restart airplay</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="landscape">
@@ -156,6 +175,9 @@
 if (isset($_GET['id']) && $id = $_GET['id']) {
     if ($id == 3) stopRadio();
     elseif ($id == 2) playRadio();
+    elseif ($id == 4) playRadio(4);
+    elseif ($id == 5) playRadio(5);
+    elseif ($id == 6) playRadio(6);
     elseif ($id == 1) restartAirPlay();
 }
 
@@ -167,10 +189,14 @@ function restartAirPlay() {
     exec("service shairport restart");
 }
 
-function playRadio() {
-//    exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &"); //Prosto
-//    exec("screen /usr/bin/mplayer http://www.radiorelax.ua/RadioRelax.m3u &"); //Relax
-    exec("screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
+function playRadio($id = 0) {
+    if ($id == 6) {
+        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &"); //Prosto
+    } elseif ($id == 5) {
+        exec("screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
+    } else {
+        exec("screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
+    }
 }
 
 function stopRadio() {
