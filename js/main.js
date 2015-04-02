@@ -13,6 +13,8 @@ $(document).ready(function() {
         fadeOut: 200
     });
 
+    $('.modal-trigger').leanModal();
+
     body.on('click','.commandStart',function(e){
         preloader.on();
         e.preventDefault();
@@ -24,11 +26,11 @@ $(document).ready(function() {
         $.get('/?id='+id);
 
         if (id == 1) {
-            toast('Restarted!', 3000);
-        } else if (id == 2) {
-            toast('Make some noise!', 3000);
+            Materialize.toast('Restarted!', 3000);
+        } else if (id == 2 || id == 6 || id == 4 || id == 5) {
+            Materialize.toast('Make some noise!', 3000);
         } else if (id == 3) {
-            toast('I killed that bitch!', 3000);
+            Materialize.toast('I killed that bitch!', 3000);
         }
 
         setTimeout(function(){

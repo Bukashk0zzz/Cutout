@@ -82,30 +82,50 @@
                         </div>
 
                         <div class="row">
-                            <div class="col s4">
-                                <button class="waves-effect waves-green btn commandStart" data-id="4">
-                                    A
-                                </button>
+                            <div class="col s7">
+                                <a class="modal-trigger waves-effect waves-light btn blue" href="#play"><i class="large mdi-av-play-arrow left"></i> Play</a>
                             </div>
                             <div class="col s4">
-                                <button class="waves-effect waves-green btn commandStart" data-id="5">
-                                    M
-                                </button>
-                            </div>
-                            <div class="col s4">
-                                <button class="waves-effect waves-green btn commandStart" data-id="6">
-                                    P
-                                </button>
+                                <button class="waves-effect waves-red btn commandStart red darken-4" data-id="3">Stop</button>
                             </div>
                         </div>
 
+
                         <div class="row">
                             <div class="col s12">
-                                <button class="waves-effect waves-red btn commandStart red darken-4" data-id="3"><i class="large mdi-av-stop left"></i>Stop radio</button>
-                            </div>
-
-                            <div class="col s12">
                                 <button class="waves-effect waves-light btn commandStart blue-grey darken-4" data-id="1"><i class="large mdi-av-repeat left"></i>Restart airplay</button>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal Structure -->
+                        <div id="play" class="modal bottom-sheet">
+                            <div class="modal-content">
+                                <div style="width: 80%; margin: 0 auto 0 auto;">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="waves-effect waves-green btn commandStart blue width100" data-id="4">
+                                                <i class="large mdi-av-play-arrow left"></i> Aristocrats
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="waves-effect waves-green btn commandStart blue width100" data-id="5">
+                                                <i class="large mdi-av-play-arrow left"></i> Music (A)
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 0;">
+                                        <div class="col s12">
+                                            <button class="waves-effect waves-green btn commandStart blue width100" data-id="6">
+                                                <i class="large mdi-av-play-arrow left"></i> Prostoradio
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,6 +210,7 @@ function restartAirPlay() {
 }
 
 function playRadio($id = 0) {
+    stopRadio();
     if ($id == 6) {
         exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &"); //Prosto
     } elseif ($id == 5) {

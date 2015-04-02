@@ -46,6 +46,16 @@ main {
     margin-right: -20px !important;
 }
 
+input[type=range]::-webkit-slider-thumb {
+    height: 22px;
+    width: 22px;
+    margin: -9px 0 0;
+}
+
+.width100 {
+    width: 100%;
+}
+
 @media only screen and (max-device-width: 600px) and (orientation:landscape) {
     .landscape {
         display: block;

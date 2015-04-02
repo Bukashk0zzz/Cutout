@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-    gulp.src([
+    return gulp.src([
         'css/materialize.css',
         'css/materialPreloader.css',
         'css/main.css'
