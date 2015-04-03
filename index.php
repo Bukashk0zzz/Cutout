@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="temperature row">
-                            <?php list($temperature, $humidity, $time) = $db->getTemperature(); ?>
+                            <?php list($temperature, $humidity, $time, $temperature_o, $humidity_o) = $db->getTemperature(); ?>
                             <div class="row">
                                 <span>
                                     <?= $temperature ?> <i class="mdi-image-wb-sunny"></i>
@@ -65,9 +65,15 @@
                             <div class="pir">
                                 <?php $time_action = $db->getPir(); ?>
                                 <div class="row">
-                                <span class="pirContent">
-                                    <?= date('H:i:s', $time_action) ?> <i class="mdi-action-accessibility"></i>
-                                </span>
+                                    <span>
+                                        <?= $temperature_o ?> <i class="mdi-image-wb-sunny"></i>
+                                    </span>
+                                    <span>
+                                        <?= $humidity_o ?>% <i class="mdi-action-invert-colors"></i>
+                                    </span>
+                                    <span >
+                                        <?= date('H:i:s', $time_action) ?> <i class="mdi-action-accessibility"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -133,34 +139,114 @@
                 <div class="landscape">
                     <div class="row temperatureGraph" style="text-align: center;">
                         <script>
-                            <?php list($labels,$data,$dataH) = $db->getTemperatureTodayData()?>
+                            <?php list($labels,$data,$dataH,$data_o,$dataH_o) = $db->getTemperatureTodayData()?>
                             temperatureTodayData = {
                                 labels: [<?=$labels?>],
                                 datasets: [
                                     {
                                         label: "Humidity",
-                                        fillColor: "rgba(220,220,220,0.2)",
-                                        strokeColor: "rgba(220,220,220,1)",
-                                        pointColor: "rgba(220,220,220,1)",
-                                        pointStrokeColor: "#fff",
-                                        pointHighlightFill: "#fff",
-                                        pointHighlightStroke: "rgba(220,220,220,1)",
-                                        data: [<?=$dataH?>]
-                                    },
-                                    {
-                                        label: "Temperature",
                                         fillColor: "rgba(151,187,205,0.2)",
                                         strokeColor: "rgba(151,187,205,1)",
                                         pointColor: "rgba(151,187,205,1)",
                                         pointStrokeColor: "#fff",
                                         pointHighlightFill: "#fff",
-                                        pointHighlightStroke: "rgba(151,187,205,1)",
+                                        pointHighlightStroke: "rgba(151,187,205,0.8)",
+                                        data: [<?=$dataH?>]
+                                    },
+                                    {
+                                        label: "Temperature",
+                                        fillColor: "rgba(247,70,74,0.2)",
+                                        strokeColor: "rgba(247,70,74,1)",
+                                        pointColor: "rgba(247,70,74,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(247,70,74,0.8)",
                                         data: [<?=$data?>]
                                     }
                                 ]
                             };
                         </script>
                         <canvas id="temperatureToday" height="175"></canvas>
+                    </div>
+                    <div class="row temperatureGraph" style="text-align: center;">
+                        <script>
+                            temperatureTodayOutdoorData = {
+                                labels: [<?=$labels?>],
+                                datasets: [
+                                    {
+                                        label: "Humidity outdoor",
+                                        fillColor: "rgba(253,180,92,0.2)",
+                                        strokeColor: "rgba(253,180,92,1)",
+                                        pointColor: "rgba(253,180,92,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(253,180,92,0.8)",
+                                        data: [<?=$dataH_o?>]
+                                    },
+                                    {
+                                        label: "Temperature outdoor",
+                                        fillColor: "rgba(70,191,189,0.2)",
+                                        strokeColor: "rgba(70,191,189,1)",
+                                        pointColor: "rgba(70,191,189,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(70,191,189,0.8)",
+                                        data: [<?=$data_o?>]
+                                    }
+                                ]
+                            };
+                        </script>
+                        <canvas id="temperatureTodayOutdoor" height="175"></canvas>
+                    </div>
+                    <div class="row temperatureGraph" style="text-align: center;">
+                        <script>
+                            temperatureTodayAllData = {
+                                labels: [<?=$labels?>],
+                                datasets: [
+                                    {
+                                        label: "Humidity",
+                                        fillColor: "rgba(151,187,205,0.2)",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        pointColor: "rgba(151,187,205,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(151,187,205,0.8)",
+                                        data: [<?=$dataH?>]
+                                    },
+                                    {
+                                        label: "Temperature",
+                                        fillColor: "rgba(247,70,74,0.2)",
+                                        strokeColor: "rgba(247,70,74,1)",
+                                        pointColor: "rgba(247,70,74,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(247,70,74,0.8)",
+                                        data: [<?=$data?>]
+                                    },
+                                    {
+                                        label: "Humidity outdoor",
+                                        fillColor: "rgba(253,180,92,0.2)",
+                                        strokeColor: "rgba(253,180,92,1)",
+                                        pointColor: "rgba(253,180,92,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(253,180,92,0.8)",
+                                        data: [<?=$dataH_o?>]
+                                    },
+                                    {
+                                        label: "Temperature outdoor",
+                                        fillColor: "rgba(70,191,189,0.2)",
+                                        strokeColor: "rgba(70,191,189,1)",
+                                        pointColor: "rgba(70,191,189,1)",
+                                        pointStrokeColor: "#fff",
+                                        pointHighlightFill: "#fff",
+                                        pointHighlightStroke: "rgba(70,191,189,0.8)",
+                                        data: [<?=$data_o?>]
+                                    }
+                                ]
+                            };
+                        </script>
+                        <canvas id="temperatureTodayAll" height="175"></canvas>
                     </div>
                     <div class="row pirGraph" style="text-align: center;">
                         <script>

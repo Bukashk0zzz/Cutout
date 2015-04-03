@@ -63,6 +63,20 @@ $(document).ready(function() {
             multiTooltipTemplate: "<%=datasetLabel%>: <%=value%>"
         });
 
+    var ctx = $("#temperatureTodayOutdoor").get(0).getContext("2d"),
+        myLineChart = new Chart(ctx).Line(temperatureTodayOutdoorData, {
+            responsive: true,
+            pointHitDetectionRadius : 3,
+            multiTooltipTemplate: "<%=datasetLabel%>: <%=value%>"
+        });
+
+    var ctx = $("#temperatureTodayAll").get(0).getContext("2d"),
+        myLineChart = new Chart(ctx).Line(temperatureTodayAllData, {
+            responsive: true,
+            pointHitDetectionRadius : 3,
+            multiTooltipTemplate: "<%=datasetLabel%>: <%=value%>"
+        });
+
     var ctx2 = $("#pirToday").get(0).getContext("2d"),
         myLineChart = new Chart(ctx2).Radar(pirTodayData, {
             responsive: true,
