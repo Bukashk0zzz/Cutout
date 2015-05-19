@@ -124,6 +124,13 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="waves-effect waves-green btn commandStart blue width100" data-id="7">
+                                                <i class="large mdi-av-play-arrow left"></i> Lounge FM
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="row" style="margin-bottom: 0;">
                                         <div class="col s12">
                                             <button class="waves-effect waves-green btn commandStart blue width100" data-id="6">
@@ -284,6 +291,7 @@ if (isset($_GET['id']) && $id = $_GET['id']) {
     elseif ($id == 4) playRadio(4);
     elseif ($id == 5) playRadio(5);
     elseif ($id == 6) playRadio(6);
+    elseif ($id == 7) playRadio(7);
     elseif ($id == 1) restartAirPlay();
 }
 
@@ -298,9 +306,11 @@ function restartAirPlay() {
 function playRadio($id = 0) {
     stopRadio();
     if ($id == 6) {
-        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &"); //Prosto
+        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128.m3u &"); //Prosto
     } elseif ($id == 5) {
         exec("screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
+    } elseif ($id == 7) {
+        exec("screen /usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
     } else {
         exec("screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
     }
