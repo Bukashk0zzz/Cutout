@@ -306,7 +306,7 @@ function restartAirPlay() {
 function playRadio($id = 0) {
     stopRadio();
     if ($id == 6) {
-        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128.m3u &"); //Prosto
+        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128 &"); //Prosto
     } elseif ($id == 5) {
         exec("screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
     } elseif ($id == 7) {
