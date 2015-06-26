@@ -300,24 +300,24 @@ if (isset($_GET['volume']) && $volume = $_GET['volume']) {
 }
 
 function restartAirPlay() {
-    exec("service shairport restart");
+    exec("/usr/sbin/service shairport restart");
 }
 
 function playRadio($id = 0) {
     stopRadio();
     if ($id == 6) {
-        exec("screen /usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128 &"); //Prosto
+        exec("/usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128 &"); //Prosto
     } elseif ($id == 5) {
-        exec("screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
+        exec("/usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
     } elseif ($id == 7) {
-        exec("screen /usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
+        exec("/usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
     } else {
-        exec("screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
+        exec("/usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
     }
 }
 
 function stopRadio() {
-    exec("killall -9 mplayer");
+    exec("/usr/bin/killall -9 mplayer");
 }
 
 function getVolume() {
