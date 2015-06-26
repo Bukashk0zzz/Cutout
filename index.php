@@ -306,13 +306,13 @@ function restartAirPlay() {
 function playRadio($id = 0) {
     stopRadio();
     if ($id == 6) {
-        exec("/usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128 &"); //Prosto
+        exec("/usr/bin/screen /usr/bin/mplayer http://62.80.190.246:8000/ProstoRadiO128 &"); //Prosto
     } elseif ($id == 5) {
-        exec("/usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
+        exec("/usr/bin/screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
     } elseif ($id == 7) {
-        exec("/usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
+        exec("/usr/bin/screen /usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
     } else {
-        exec("/usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
+        exec("/usr/bin/screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
     }
 }
 
