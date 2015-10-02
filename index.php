@@ -126,6 +126,13 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
+                                            <button class="waves-effect waves-green btn commandStart blue width100" data-id="8">
+                                                <i class="large mdi-av-play-arrow left"></i> Jazz (A)
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
                                             <button class="waves-effect waves-green btn commandStart blue width100" data-id="7">
                                                 <i class="large mdi-av-play-arrow left"></i> Lounge FM
                                             </button>
@@ -311,8 +318,10 @@ function playRadio($id = 0) {
         exec("/usr/bin/screen /usr/bin/mplayer http://144.76.79.38:8000/amusic-128 &"); //Aristocrats music
     } elseif ($id == 7) {
         exec("/usr/bin/screen /usr/bin/mplayer http://cast.loungefm.com.ua/loungefm &"); //Lounge fm
-    } else {
+    } elseif($id == 4) {
         exec("/usr/bin/screen /usr/bin/mplayer http://144.76.79.38:8000/live2 &"); //Aristocrats
+    } elseif($id == 8) {
+        exec("/usr/bin/screen /usr/bin/mplayer http://144.76.79.38:8000/ajazz &"); //Aristocrats jazz
     }
 }
 

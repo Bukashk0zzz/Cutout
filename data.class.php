@@ -58,7 +58,7 @@ class dbData {
             $temp4 = 0;
             $time = 0;
             while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-                if ($i == 60) {
+                if ($i == 12) {
 
                     $labels[] = date('H:i',$time);
                     $data[] = round($temp/$z,1);
