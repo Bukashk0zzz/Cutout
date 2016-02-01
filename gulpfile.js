@@ -38,7 +38,7 @@ gulp.task('js', function () {
         .pipe(cache('jsing'))
         .pipe(concat('uglify.js'))
         .pipe(uglify())
-        .pipe(rename('main.min.js'))
+        .pipe(rename('scripts.min.js'))
         .pipe(gulp.dest('js/'))
         .pipe(gzip({ append: true, level: 6 }))
         .pipe(gulp.dest('js/'));

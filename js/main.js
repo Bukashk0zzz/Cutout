@@ -1,5 +1,7 @@
 var body = $('body'),
-    sliding = false;
+    sliding = false,
+    domain = '/';
+    //domain = 'http://lan.mysimple.name/';
 
 preloader = new $.materialPreloader({
     position: 'top',
@@ -14,7 +16,7 @@ preloader = new $.materialPreloader({
 
 $('.modal-trigger').leanModal();
 
-$.get('/api.php?data=main', function(data) {
+$.get(domain+'api.php?data=main', function(data) {
     $('#temperature').html(data.temperature);
     $('#humidity').html(data.humidity);
     $('#temperature_o').html(data.temperature_o);
@@ -29,7 +31,7 @@ $.get('/api.php?data=main', function(data) {
 }).fail(function() {
     window.location.reload();
 }).done(function() {
-    $.get('/api.php?data=statistic', function(data) {
+    $.get(domain+'api.php?data=statistic', function(data) {
 
         var temperatureTodayData = {
             labels: data.temperature.labels,
@@ -186,7 +188,7 @@ body.on('click','.commandStart',function(e){
     var el = $(this),
         id = el.attr('data-id');
 
-    $.get('/api.php?id='+id);
+    $.get(domain+'api.php?id='+id);
 
     if (id == 1) {
         Materialize.toast('Restarted!', 3000);
@@ -210,7 +212,7 @@ body.on('change','#volume',function(){
 
     setTimeout(function(){
         var volume = $("#volume").val();
-        $.get('/?volume='+volume);
+        $.get(domain+'api.php?volume='+volume);
         sliding = false;
     }, 200);
 
