@@ -91,11 +91,11 @@ class dbData {
 
 
         return [
-            implode(',',array_map('add_quotes', $labels)),
-            implode(",",array_map('add_quotes', $data)),
-            implode(",",array_map('add_quotes', $dataH)),
-            implode(",",array_map('add_quotes', $data_o)),
-            implode(",",array_map('add_quotes', $dataH_o))
+            $labels,
+            $data,
+            $dataH,
+            $data_o,
+            $dataH
         ];
     }
 
@@ -127,6 +127,6 @@ class dbData {
             }
         }
 
-        return [implode(',',array_map('add_quotes', $labels)),implode(",",array_map('add_quotes', $data))];
+        return [$labels,$data];
     }
 }
