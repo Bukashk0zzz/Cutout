@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     $('.modal-trigger').leanModal();
 
-    $.get('/api.php?data=main', function(data) {
+    $.get('http://lan.mysimple.name/api.php?data=main', function(data) {
         $('#temperature').html(data.temperature);
         $('#humidity').html(data.humidity);
         $('#temperature_o').html(data.temperature_o);
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }).fail(function() {
         window.location.reload();
     }).done(function() {
-        $.get('/api.php?data=statistic', function(data) {
+        $.get('http://lan.mysimple.name/api.php?data=statistic', function(data) {
 
             var temperatureTodayData = {
                 labels: data.temperature.labels,
@@ -187,7 +187,7 @@ $(document).ready(function() {
         var el = $(this),
             id = el.attr('data-id');
 
-        $.get('/api.php?id='+id);
+        $.get('http://lan.mysimple.name/api.php?id='+id);
 
         if (id == 1) {
             Materialize.toast('Restarted!', 3000);
@@ -211,7 +211,7 @@ $(document).ready(function() {
 
         setTimeout(function(){
             var volume = $("#volume").val();
-            $.get('/?volume='+volume);
+            $.get('http://lan.mysimple.name/?volume='+volume);
             sliding = false;
         }, 200);
 
