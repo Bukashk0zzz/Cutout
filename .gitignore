@@ -2,3 +2,4 @@
 temperature/temperature.db
 pir/lastMotion
 pir/pir.db
+node_modules/

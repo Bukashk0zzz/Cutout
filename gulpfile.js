@@ -50,9 +50,9 @@ gulp.task('default', ['styles','js'], function () {
         notify: false,
         open: false,
         logPrefix: 'WSK',
-        port: 8800,
+        port: 5500,
         injectChanges: true,
-        proxy: "http://127.0.0.1:8000"
+        proxy: "http://127.0.0.1:5000"
     });
 
     gulp.watch(['css/**/*.css'], ['styles']);
