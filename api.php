@@ -114,8 +114,8 @@ function getVolume() {
 }
 
 function getRadioStatus() {
-    $status = (APPLICATION_ENV === 'development') ?'1':exec('ps -ef |grep mplayer |wc -l');
-    return ((int)$status > 1);
+    $status = (APPLICATION_ENV === 'development') ?'2':exec('ps -ef |grep mplayer |wc -l');
+    return ((int)$status > 2);
 }
 
 function setVolume($volume) {
