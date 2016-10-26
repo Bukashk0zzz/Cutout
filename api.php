@@ -5,19 +5,19 @@ include_once __DIR__.'/data.class.php';
 $db = new dbData();
 
 if (array_key_exists('id', $_GET) && $id = $_GET['id']) {
-    if ($id === 3) {
+    if ($id == 3) {
         stopRadio();
-    } elseif ($id === 2) {
+    } elseif ($id == 2) {
         playRadio();
-    } elseif ($id === 4) {
+    } elseif ($id == 4) {
         playRadio(4);
-    } elseif ($id === 5) {
+    } elseif ($id == 5) {
         playRadio(5);
-    } elseif ($id === 6) {
+    } elseif ($id == 6) {
         playRadio(6);
-    } elseif ($id === 7) {
+    } elseif ($id == 7) {
         playRadio(7);
-    } elseif ($id === 1) {
+    } elseif ($id == 1) {
         restartAirPlay();
     }
 }

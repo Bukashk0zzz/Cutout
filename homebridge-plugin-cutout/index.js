@@ -74,7 +74,9 @@ Cutout.prototype = {
     },
 
     setVolume: function (volume, callback) {
-        this.httpRequest('Setting volume', this.url+'/api.php?volume='+volume, function(error, response, body) {
+        var volumeReal = (Number(volume)/4)+75;
+
+        this.httpRequest('Setting volume', this.url+'/api.php?volume='+volumeReal.toFixed(1), function(error, response, body) {
             callback(null);
         }.bind(this));
     },
@@ -95,10 +97,12 @@ Cutout.prototype = {
         this.httpRequest('Setting radio status', this.url+'/api.php?id='+id, function(error, response, body) {
             that.speakerService
                 .getCharacteristic(Characteristic.On)
-                .setValue(on);
+                .getValue()
+            ;
             that.radioService
                 .getCharacteristic(Characteristic.On)
-                .setValue(on);
+                .getValue()
+            ;
 
             callback(null);
         }.bind(this));
