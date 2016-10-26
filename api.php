@@ -88,6 +88,10 @@ function restartAirPlay() {
 }
 
 function playRadio($id = 0) {
+    if (array_key_exists('homekit', $_GET) && $_GET['homekit'] && getRadioStatus()) {
+        return;
+    }
+
     stopRadio();
     if ($id === 6) {
         exec('/usr/bin/screen /usr/bin/mplayer http://62.80.190.246:8000/PRK128 &'); //Prosto
