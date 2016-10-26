@@ -3,3 +3,4 @@ temperature/temperature.db
 pir/lastMotion
 pir/pir.db
 node_modules/
+homebridge-plugin-cutout/node_modules/

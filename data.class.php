@@ -12,7 +12,7 @@ class dbData {
         $humidity_o = '';
         $time = time();
 
-        if ($db = new PDO("sqlite:temperature/temperature.db")) {
+        if ($db = new PDO('sqlite:temperature/temperature.db')) {
             $waiting = true;
             while($waiting) {
                 try {
@@ -39,7 +39,7 @@ class dbData {
 
     public function getPir() {
         $time = time();
-        if ($db = new PDO("sqlite:pir/pir.db")) {
+        if ($db = new PDO('sqlite:pir/pir.db')) {
             $waiting = true;
             while($waiting) {
                 try {
@@ -69,7 +69,7 @@ class dbData {
         $data_o = array();
         $dataH_o = array();
 
-        if ($db = new PDO("sqlite:temperature/temperature.db")) {
+        if ($db = new PDO('sqlite:temperature/temperature.db')) {
             $waiting = true;
             while($waiting) {
                 try {
@@ -82,7 +82,7 @@ class dbData {
                     $temp4 = 0;
                     $time = 0;
                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        if ($i == 12) {
+                        if ($i === 12) {
 
                             $labels[] = date('H:i',$time);
                             $data[] = round($temp/$z,1);
@@ -100,10 +100,10 @@ class dbData {
 
 
                         if($row['temperature'] > 0) {
-                            $temp = $temp+$row['temperature'];
-                            $temp2 = $temp2+$row['humidity'];
-                            $temp3 = $temp3+$row['temperature_o'];
-                            $temp4 = $temp4+$row['humidity_o'];
+                            $temp += $row['temperature'];
+                            $temp2 += $row['humidity'];
+                            $temp3 += $row['temperature_o'];
+                            $temp4 += $row['humidity_o'];
                             $time = $row['time'];
                             $z++;
                         }
@@ -129,7 +129,7 @@ class dbData {
             $data,
             $dataH,
             $data_o,
-            $dataH
+            $dataH_o
         ];
     }
 
@@ -140,7 +140,7 @@ class dbData {
         $labels = array();
         $data = array();
 
-        if ($db = new PDO("sqlite:pir/pir.db")) {
+        if ($db = new PDO('sqlite:pir/pir.db')) {
             $waiting = true;
             while($waiting) {
                 try {
@@ -158,7 +158,7 @@ class dbData {
                             $time_last = $row['time']+1800;
                         }
 
-                        $temp = $temp+1;
+                        ++$temp;
                         $time = $row['time'];
                     }
                     $waiting = false;

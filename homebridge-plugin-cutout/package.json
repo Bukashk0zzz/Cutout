@@ -1,0 +1,23 @@
+{
+  "name": "homebridge-plugin-cutout",
+  "version": "0.0.1",
+  "description": "cutout plugin for homebridge",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": {
+    "name": "@bukashk0zzz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bukashk0zzz/homebridge-plugin-cutout.git"
+  },
+  "dependencies": {
+    "request": "^2.76.0"
+  }
+}
